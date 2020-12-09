@@ -79,6 +79,7 @@ progress	db 0
 szInstall		db "Install",0
 szNext			db "Next",0
 szStart			db "Start",0
+szFinish			db "Finish",0
 license_file	db "LICENSE.md"
 
 szExitText		db "Do you really want to stop setup?",0
@@ -92,6 +93,7 @@ current_dir		db MAX_PATH dup(0)
 
 hInstance		dd ?
 hTab			dd ?
+hOk				dd ?
 hTabDlg			dd 5 dup(?)
 
 ;#########################################################################

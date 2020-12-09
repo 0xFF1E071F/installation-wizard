@@ -34,7 +34,24 @@ Tab3Proc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 Tab3Proc endp
 
 Tab4Proc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
-	
+	mov eax, uMsg
+	.if eax==WM_NULL
+		invoke SetTimer,hWin,10,50,0
+	.elseif eax==WM_TIMER
+		inc progress
+		invoke SendDlgItemMessage, hWin, IDC_PGB1, PBM_SETPOS, progress, 0
+		.if progress==100
+			invoke KillTimer,hWin,10
+;			invoke MessageBox,0,addr szExitText,addr szExitCaption,MB_OKCANCEL + MB_ICONQUESTION
+			
+			invoke ShowWindow,hOk,SW_SHOW
+
+		.endif
+	.else
+		mov		eax,FALSE
+		ret
+
+	.endif
 	mov		eax,TRUE
 	ret
 
@@ -51,15 +68,18 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 	
 	mov		eax,uMsg
 	.if eax==WM_INITDIALOG
-		;Create the tabs
+		invoke GetDlgItem,hWin,IDC_BTN1
+		mov		hOk, eax
 		invoke GetDlgItem,hWin,IDC_TAB1
 		mov		hTab,eax
+		
 		mov		ts.imask,TCIF_TEXT
 		mov		ts.lpReserved1,0
 		mov		ts.lpReserved2,0
 		mov		ts.iImage,-1
 		mov		ts.lParam,0
 		
+		;Create the tabs
 		mov		ts.pszText,offset TabTitle1
 		mov		ts.cchTextMax,sizeof TabTitle1
 		invoke SendMessage,hTab,TCM_INSERTITEM,0,addr ts
@@ -113,16 +133,19 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 			invoke ShowWindow,[hTabDlg+eax*4],SW_SHOWDEFAULT
 			invoke SendMessage,hTab,TCM_SETCURSEL,SelTab,0
 			
-			invoke GetDlgItem,hWin,IDC_BTN1
 			.if SelTab==0
-				invoke SetWindowText,eax,addr szStart
+				invoke SetWindowText,hOk,addr szStart
 			.elseif SelTab==1
-				invoke SetWindowText,eax,addr szNext
+				invoke SetWindowText,hOk,addr szNext
 			.elseif SelTab==2
-				invoke SetWindowText,eax,addr szInstall
+				invoke SetWindowText,hOk,addr szInstall
 			.elseif SelTab==3; start progress
-				invoke ShowWindow,eax,SW_HIDE
+				invoke ShowWindow,hOk,SW_HIDE
+				invoke SetWindowText,hOk,addr szNext
 				invoke SendMessage,[hTabDlg+3*4],WM_NULL,0,0
+			.elseif SelTab==4
+				invoke SetWindowText,hOk,addr szFinish
+				invoke ShowWindow,hOk,SW_SHOW
 			.endif
 		.elseif wParam == IDC_BTN2
 			invoke MessageBox,0,addr szExitText,addr szExitCaption,MB_OKCANCEL + MB_ICONQUESTION
