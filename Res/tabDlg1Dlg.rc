@@ -1,0 +1,15 @@
+#define IDD_DLG1 1000
+#define IDC_STC1 1003
+#define IDC_STC2 1004
+#define IDC_STC3 1001
+#define IDC_IMG1 1002
+IDD_DLG1 DIALOGEX 0,10,242,156
+FONT 9,"Times New Roman",400,0,204
+STYLE 0x400C0000
+EXSTYLE 0x00000000
+BEGIN
+  CONTROL "Welcome to the Setup Wizard",IDC_STC1,"Static",0x5000000B,96,5,132,20,0x00000000
+  CONTROL "This will install programm on your computer",IDC_STC2,"Static",0x5000000B,96,33,134,23,0x00000000
+  CONTROL "Click Next to continue, or Cancel to exit setup",IDC_STC3,"Static",0x5000000B,96,46,179,16,0x00000000
+  CONTROL "",IDC_IMG1,"Static",0x50000203,-5,4,83,150,0x00000000
+END

@@ -1,1 +1,7 @@
+#include "Res/installation-wizardRes.rc"
+#include "Res/tabDlg5Dlg.rc"
+#include "Res/tabDlg4Dlg.rc"
+#include "Res/tabDlg3Dlg.rc"
+#include "Res/tabDlg2Dlg.rc"
+#include "Res/tabDlg1Dlg.rc"
 #include "Res/installation-wizardDlg.rc"
