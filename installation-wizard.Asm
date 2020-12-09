@@ -133,6 +133,7 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		invoke CreateDialogParam,hInstance,IDD_DLG5,hTab,addr Tab5Proc,0
 		mov hTabDlg[16],eax
 		
+		; Load Image
 		invoke GetDlgItem,hTabDlg,IDC_IMG1
 		mov hImage1, eax
 		
@@ -143,7 +144,7 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		invoke SendMessage, hImage1, STM_SETIMAGE,IMAGE_BITMAP,eax
 		invoke SendMessage, hImage2, STM_SETIMAGE,IMAGE_BITMAP,eax
 		
-		
+		; Read license file
 		invoke GetDlgItem,hTabDlg[4],IDC_EDT1
 		mov		hText, eax
 		
@@ -156,9 +157,7 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		mov hFile, eax
 		
 		invoke ReadFile, hFile, pmem, 4000h, readed, 0
-		
 		invoke SendMessage, hText, WM_SETTEXT,0,pmem
-		invoke MessageBox, 0, pmem, 0, MB_OK
 	exit:
 		invoke Mem_Free, pmem
 		
