@@ -83,8 +83,8 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		mov hTabDlg,eax
 		invoke CreateDialogParam,hInstance,IDD_DLG2,hTab,addr Tab2Proc,0
 		mov hTabDlg[4],eax
-;		invoke CreateDialogParam,hInstance,IDD_DLG3,hTab,addr Tab3Proc,0
-;		mov hTabDlg[8],eax
+		invoke CreateDialogParam,hInstance,IDD_DLG3,hTab,addr Tab3Proc,0
+		mov hTabDlg[8],eax
 ;		invoke CreateDialogParam,hInstance,IDD_DLG4,hTab,addr Tab4Proc,0
 ;		mov hTabDlg[12],eax
 ;		invoke CreateDialogParam,hInstance,IDD_DLG5,hTab,addr Tab4Proc,0
