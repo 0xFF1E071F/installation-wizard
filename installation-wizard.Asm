@@ -90,10 +90,34 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		mov hTabDlg[16],eax
 		
 	.elseif eax==WM_COMMAND
-		.if wParam == IDC_BTN2
+		.if wParam == IDC_BTN1
+			
+			mov eax, sizeof hTabDlg
+			mov ecx, 5
+			div ecx
+
+			; Close if it is the last element
+			.if SelTab == eax
+				invoke SendMessage,hWin,WM_CLOSE,0,0
+			.endif
+			
+			; Hide current tab
+			mov eax, SelTab
+			push eax
+			invoke ShowWindow,[hTabDlg+eax*4],SW_HIDE
+			
+			; Get next tab
+			pop eax
+			inc eax
+			mov SelTab, eax
+			
+			invoke ShowWindow,[hTabDlg+eax*4],SW_SHOWDEFAULT
+			invoke SendMessage,hTab,TCM_SETCURSEL,SelTab,0
+			
+		.elseif wParam == IDC_BTN2
 			invoke MessageBox,0,addr szExitText,addr szExitCaption,MB_OKCANCEL + MB_ICONQUESTION
 			.if eax==IDOK
-				invoke EndDialog,hWin,0
+				invoke SendMessage,hWin,WM_CLOSE,0,0
 			.endif
 		.endif
 	.elseif eax==WM_CLOSE
