@@ -48,7 +48,6 @@ Menu=1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0
 17=0,0,"$E\OllyDbg",5
 [Resource]
 1=1,0,8,..\..\..\..\..\ASM\ASM\Masm\Sniplets\Code\2.XML
-2=,0,0,
 [StringTable]
 [VerInf]
 [Group]
@@ -75,3 +74,5 @@ AutoLoad=
 9=0,0,0,0
 7=0,0,0,0
 8=0,0,0,0
+6=0,0,0,0
+5=0,0,0,0
