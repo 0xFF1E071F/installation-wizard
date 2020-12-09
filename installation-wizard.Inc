@@ -74,12 +74,11 @@ TabTitle3       db "Path",0
 TabTitle4		db "Setup",0
 TabTitle5		db "Done",0
 SelTab			dd 0
-CurrentProgress	db 0
+progress	db 0
 
-btn_install		db "Install",0
-btn_next		db "Next",0
-btn_start		db "Start",0
-browse_ph		db "N",0
+szInstall		db "Install",0
+szNext			db "Next",0
+szStart			db "Start",0
 license_file	db "LICENSE.md"
 
 szExitText		db "Do you really want to stop setup?",0

@@ -19,32 +19,31 @@ start:
 
 
 Tab1Proc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
-
 	mov		eax,TRUE
 	ret
-
 Tab1Proc endp
 
 Tab2Proc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
-
 	mov		eax,TRUE
 	ret
-
 Tab2Proc endp
 
 Tab3Proc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
-
 	mov		eax,TRUE
 	ret
-
 Tab3Proc endp
 
 Tab4Proc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
-
+	
 	mov		eax,TRUE
 	ret
 
 Tab4Proc endp
+
+Tab5Proc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
+	mov		eax,TRUE
+	ret
+Tab5Proc endp
 
 DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 	LOCAL	ts:TC_ITEM
@@ -86,7 +85,7 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		mov hTabDlg[8],eax
 		invoke CreateDialogParam,hInstance,IDD_DLG4,hTab,addr Tab4Proc,0
 		mov hTabDlg[12],eax
-		invoke CreateDialogParam,hInstance,IDD_DLG5,hTab,addr Tab4Proc,0
+		invoke CreateDialogParam,hInstance,IDD_DLG5,hTab,addr Tab5Proc,0
 		mov hTabDlg[16],eax
 		
 	.elseif eax==WM_COMMAND
@@ -114,6 +113,17 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 			invoke ShowWindow,[hTabDlg+eax*4],SW_SHOWDEFAULT
 			invoke SendMessage,hTab,TCM_SETCURSEL,SelTab,0
 			
+			invoke GetDlgItem,hWin,IDC_BTN1
+			.if SelTab==0
+				invoke SetWindowText,eax,addr szStart
+			.elseif SelTab==1
+				invoke SetWindowText,eax,addr szNext
+			.elseif SelTab==2
+				invoke SetWindowText,eax,addr szInstall
+			.elseif SelTab==3; start progress
+				invoke ShowWindow,eax,SW_HIDE
+				invoke SendMessage,[hTabDlg+3*4],WM_NULL,0,0
+			.endif
 		.elseif wParam == IDC_BTN2
 			invoke MessageBox,0,addr szExitText,addr szExitCaption,MB_OKCANCEL + MB_ICONQUESTION
 			.if eax==IDOK
