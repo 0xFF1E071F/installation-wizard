@@ -5,6 +5,7 @@ Description=installation-wizard
 Backup=$P\Bak\
 Group=1
 GroupExpand=1
+Res.rc=1
 [Files]
 1=installation-wizard.Asm
 2=installation-wizard.Inc
@@ -46,6 +47,8 @@ Menu=1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0
 16=*.obj,O,$B\ML.EXE /c /coff /Cp /nologo /I"$I",*.asm
 17=0,0,"$E\OllyDbg",5
 [Resource]
+1=1,0,8,..\..\..\..\..\ASM\ASM\Masm\Sniplets\Code\2.XML
+2=,0,0,
 [StringTable]
 [VerInf]
 [Group]
@@ -64,6 +67,7 @@ AutoLoad=
 [RADebugBP]
 2=
 1=
+0=
 [Collapse]
 3=
 [Size]
