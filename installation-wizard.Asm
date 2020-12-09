@@ -43,7 +43,7 @@ Mem_Free PROC DATA:DWORD
 	ret	;вихід з процедури
 Mem_Free endp
 
-
+;########################################################################
 
 
 Tab1Proc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
@@ -190,7 +190,6 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 				invoke SetWindowText,hOk,addr szStart
 			.elseif SelTab==1
 				invoke SetWindowText,hOk,addr szNext
-;				invoke SendMessage,[hTabDlg+1*4],WM_NULL,0,0
 			.elseif SelTab==2
 				invoke SetWindowText,hOk,addr szInstall
 			.elseif SelTab==3; start progress
