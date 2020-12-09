@@ -14,7 +14,6 @@ DlgProc			PROTO	:HWND,:UINT,:WPARAM,:LPARAM
 
 .const
 
-
 ;installation-wizard.dlg
 IDD_DIALOG1						equ 101
 IDC_BTN2						equ 1002
@@ -63,7 +62,7 @@ IDC_STC10						equ 1003
 
 ;#########################################################################
 .data
-
+side_img		db 123
 TabTitle1       db "Intro",0
 TabTitle2       db "License",0
 TabTitle3       db "Path",0
@@ -76,17 +75,26 @@ szInstall		db "Install",0
 szNext			db "Next",0
 szStart			db "Start",0
 szFinish		db "Finish",0
-license_file	db "LICENSE.md"
+license_file	db "LICENSE",0
 
 szExitText		db "Do you really want to stop setup?",0
 szExitCaption	db "Exit Setup",0
 
+bitmapName		db "side_img",0
+szLicense		db 0
+readed			dd 0
+pmem 			dd 0
 
 .data?
 
 hInstance		dd ?
 hTab			dd ?
+hFile			dd ?
 hOk				dd ?
 hTabDlg			dd 5 dup(?)
+hText			dd ?
+
+hImage1			dd ?
+hImage2			dd ?
 
 ;#########################################################################

@@ -11,5 +11,5 @@ BEGIN
   CONTROL "Welcome to the Setup Wizard",IDC_STC1,"Static",0x5000000B,96,5,132,20,0x00000000
   CONTROL "This will install programm on your computer",IDC_STC2,"Static",0x5000000B,96,33,134,23,0x00000000
   CONTROL "Click Start to continue, or Cancel to exit setup",IDC_STC3,"Static",0x5000000B,96,46,179,16,0x00000000
-  CONTROL "",IDC_IMG1,"Static",0x50000203,-5,4,83,150,0x00000000
+  CONTROL "",IDC_IMG1,"Static",0x5000020E,-5,4,83,150,0x00000000
 END
