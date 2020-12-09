@@ -1,0 +1,53 @@
+[Project]
+Assembler=Masm
+Type=Win32 App
+Description=installation-wizard
+Backup=$P\Bak\
+Group=1
+GroupExpand=1
+[Files]
+1=installation-wizard.Asm
+2=installation-wizard.Inc
+3=installation-wizard.Rc
+4=installation-wizard.dlg
+[MakeFiles]
+0=installation-wizard.rap
+1=installation-wizard.rc
+2=installation-wizard.asm
+3=installation-wizard.obj
+4=installation-wizard.res
+5=installation-wizard.exe
+6=installation-wizard.def
+7=installation-wizard.dll
+8=installation-wizard.txt
+9=installation-wizard.lib
+10=installation-wizard.mak
+11=installation-wizard.hla
+12=installation-wizard.com
+[MakeDef]
+Menu=1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0
+1=4,O,$B\RC.EXE /v,1
+2=3,O,$B\ML.EXE /c /coff /Cp /nologo /I"$I",2
+3=5,O,$B\LINK.EXE /SUBSYSTEM:WINDOWS /RELEASE /VERSION:4.0 /LIBPATH:"$L" /OUT:"$5",3,4
+4=0,0,,5
+5=rsrc.obj,O,$B\CVTRES.EXE,rsrc.res
+7=0,0,"$E\OllyDbg",5
+6=*.obj,O,$B\ML.EXE /c /coff /Cp /nologo /I"$I",*.asm
+11=4,O,$B\RC.EXE /v,1
+12=3,O,$B\ML.EXE /c /coff /Cp /Zi /nologo /I"$I",2
+13=5,O,$B\LINK.EXE /SUBSYSTEM:WINDOWS /DEBUG /VERSION:4.0 /LIBPATH:"$L" /OUT:"$5",3,4
+14=0,0,,5
+15=rsrc.obj,O,$B\CVTRES.EXE,rsrc.res
+16=*.obj,O,$B\ML.EXE /c /coff /Cp /nologo /I"$I",*.asm
+17=0,0,"$E\OllyDbg",5
+[Resource]
+[StringTable]
+[VerInf]
+[Group]
+Group=Added files,Assembly,Resources,Misc,Modules
+1=2
+2=2
+3=3
+4=3
+[AutoLoad]
+AutoLoad=
