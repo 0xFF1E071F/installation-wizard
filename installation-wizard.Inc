@@ -10,14 +10,10 @@ includelib user32.lib
 includelib Comctl32.lib
 includelib shell32.lib
 
-;include masm32.inc
-;include debug.inc
-;includelib masm32.lib
-;includelib debug.lib
-;
 DlgProc			PROTO	:HWND,:UINT,:WPARAM,:LPARAM
 
 .const
+
 
 ;installation-wizard.dlg
 IDD_DIALOG1						equ 101
@@ -74,19 +70,16 @@ TabTitle3       db "Path",0
 TabTitle4		db "Setup",0
 TabTitle5		db "Done",0
 SelTab			dd 0
-progress	db 0
+progress		db 0
 
 szInstall		db "Install",0
 szNext			db "Next",0
 szStart			db "Start",0
-szFinish			db "Finish",0
+szFinish		db "Finish",0
 license_file	db "LICENSE.md"
 
 szExitText		db "Do you really want to stop setup?",0
 szExitCaption	db "Exit Setup",0
-
-folder_path		db MAX_PATH dup(0)
-current_dir		db MAX_PATH dup(0)
 
 
 .data?

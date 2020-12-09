@@ -42,10 +42,7 @@ Tab4Proc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		invoke SendDlgItemMessage, hWin, IDC_PGB1, PBM_SETPOS, progress, 0
 		.if progress==100
 			invoke KillTimer,hWin,10
-;			invoke MessageBox,0,addr szExitText,addr szExitCaption,MB_OKCANCEL + MB_ICONQUESTION
-			
 			invoke ShowWindow,hOk,SW_SHOW
-
 		.endif
 	.else
 		mov		eax,FALSE
@@ -114,7 +111,7 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 			mov eax, sizeof hTabDlg
 			mov ecx, 5
 			div ecx
-
+			
 			; Close if it is the last element
 			.if SelTab == eax
 				invoke SendMessage,hWin,WM_CLOSE,0,0
