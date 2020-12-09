@@ -49,7 +49,6 @@ Tab4Proc endp
 DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 	LOCAL	ts:TC_ITEM
 	LOCAL	changeSel:NMHDR
-	LOCAL	bi:BROWSEINFO
 	
 	mov		eax,uMsg
 	.if eax==WM_INITDIALOG
@@ -91,7 +90,12 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		mov hTabDlg[16],eax
 		
 	.elseif eax==WM_COMMAND
-
+		.if wParam == IDC_BTN2
+			invoke MessageBox,0,addr szExitText,addr szExitCaption,MB_OKCANCEL + MB_ICONQUESTION
+			.if eax==IDOK
+				invoke EndDialog,hWin,0
+			.endif
+		.endif
 	.elseif eax==WM_CLOSE
 		invoke EndDialog,hWin,0
 	.else
