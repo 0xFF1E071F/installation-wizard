@@ -65,6 +65,7 @@ btn_install		db "Install",0
 btn_next		db "Next",0
 btn_start		db "Start",0
 browse_ph		db "N",0
+license_file	db "LICENSE.md"
 
 folder_path		db MAX_PATH dup(0)
 current_dir		db MAX_PATH dup(0)
