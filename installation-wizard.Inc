@@ -26,38 +26,38 @@ IDC_TAB1						equ 1004
 MANIFEST						equ 24
 
 ;tabDlg1.dlg
-IDD_DLG1						equ 1000
-IDC_STC1						equ 1003
-IDC_STC2						equ 1004
-IDC_STC3						equ 1001
-IDC_IMG1						equ 1002
+IDD_DLG1						equ 2000
+IDC_STC1						equ 2003
+IDC_STC2						equ 2004
+IDC_STC3						equ 2001
+IDC_IMG1						equ 2002
 
 ;tabDlg2.dlg
-IDD_DLG2						equ 1001
-IDC_HDR1						equ 1003
-IDC_STC4						equ 1002
-IDC_EDT1						equ 1004
+IDD_DLG2						equ 3001
+IDC_HDR1						equ 3003
+IDC_STC4						equ 3002
+IDC_EDT1						equ 3004
 
 ;tabDlg3.dlg
-IDD_DLG3						equ 1002
-IDC_HDR2						equ 1001
-IDC_STC5						equ 1003
-IDC_BTN3						equ 1004
-IDC_EDT2						equ 1005
+IDD_DLG3						equ 4002
+IDC_HDR2						equ 4001
+IDC_STC5						equ 4003
+IDC_BTN3						equ 4004
+IDC_EDT2						equ 4005
 
 ;tabDlg4.dlg
-IDD_DLG4						equ 1003
-IDC_HDR3						equ 1001
-IDC_STC6						equ 1002
-IDC_PGB1						equ 1004
-IDC_STC7						equ 1005
-IDC_STC8						equ 1006
+IDD_DLG4						equ 5003
+IDC_HDR3						equ 5001
+IDC_STC6						equ 5002
+IDC_PGB1						equ 5004
+IDC_STC7						equ 5005
+IDC_STC8						equ 5006
 
 ;tabDlg5.dlg
-IDD_DLG5						equ 1004
-IDC_IMG2						equ 1001
-IDC_STC9						equ 1002
-IDC_STC10						equ 1003
+IDD_DLG5						equ 6004
+IDC_IMG2						equ 6001
+IDC_STC9						equ 6002
+IDC_STC10						equ 6003
 
 
 ;#########################################################################
@@ -84,6 +84,8 @@ bitmapName		db "side_img",0
 szLicense		db 0
 readed			dd 0
 pmem 			dd 0
+
+;styleTab		dw 408F0000
 
 .data?
 

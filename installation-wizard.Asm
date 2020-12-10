@@ -71,6 +71,7 @@ Tab4Proc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		.if progress==100
 			invoke KillTimer,hWin,10
 			invoke ShowWindow,hOk,SW_SHOW
+;			invoke SetClassLong,hWin,GCL_STYLE, styleTab
 		.endif
 	.else
 		mov		eax,FALSE
@@ -140,7 +141,7 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		invoke GetDlgItem,hTabDlg[16],IDC_IMG1
 		mov hImage2, eax
 		
-		invoke LoadBitmap,hInstance, side_img
+		invoke LoadBitmap, hInstance, side_img
 		invoke SendMessage, hImage1, STM_SETIMAGE,IMAGE_BITMAP,eax
 		invoke SendMessage, hImage2, STM_SETIMAGE,IMAGE_BITMAP,eax
 		
