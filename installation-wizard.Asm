@@ -152,15 +152,14 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		mov pmem, eax
 		
 		invoke CreateFile, addr license_file, GENERIC_READ, FILE_SHARE_READ, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0
-		cmp eax, -1
-		je exit
-		mov hFile, eax
-		
-		invoke ReadFile, hFile, pmem, 4000h, readed, 0
-		invoke SendMessage, hText, WM_SETTEXT,0,pmem
-	exit:
-		invoke Mem_Free, pmem
-		
+		.if eax==-1
+			invoke Mem_Free, pmem
+		.else
+			mov hFile, eax	
+			invoke ReadFile, hFile, pmem, 4000h, readed, 0
+			invoke SendMessage, hText, WM_SETTEXT,0,pmem
+		.endif
+
 	.elseif eax==WM_COMMAND
 		.if wParam == IDC_BTN1
 			
