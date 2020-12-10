@@ -43,7 +43,7 @@ Mem_Free PROC DATA:DWORD
 	ret	;вихід з процедури
 Mem_Free endp
 
-
+;########################################################################
 
 
 Tab1Proc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
@@ -134,15 +134,10 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		mov hTabDlg[16],eax
 		
 		; Load Image
-		invoke GetDlgItem,hTabDlg,IDC_IMG1
-		mov hImage1, eax
-		
-		invoke GetDlgItem,hTabDlg[16],IDC_IMG1
-		mov hImage2, eax
-		
-		invoke LoadBitmap,hInstance, side_img
-		invoke SendMessage, hImage1, STM_SETIMAGE,IMAGE_BITMAP,eax
-		invoke SendMessage, hImage2, STM_SETIMAGE,IMAGE_BITMAP,eax
+		invoke LoadBitmap,hInstance,100
+		mov bmp, eax
+		invoke SendDlgItemMessage,hTabDlg,IDC_IMG1,STM_SETIMAGE,IMAGE_BITMAP,bmp
+		invoke SendDlgItemMessage,hTabDlg[16],IDC_IMG2,STM_SETIMAGE,IMAGE_BITMAP,bmp
 		
 		; Read license file
 		invoke GetDlgItem,hTabDlg[4],IDC_EDT1
@@ -152,15 +147,14 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		mov pmem, eax
 		
 		invoke CreateFile, addr license_file, GENERIC_READ, FILE_SHARE_READ, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0
-		cmp eax, -1
-		je exit
-		mov hFile, eax
-		
-		invoke ReadFile, hFile, pmem, 4000h, readed, 0
-		invoke SendMessage, hText, WM_SETTEXT,0,pmem
-	exit:
-		invoke Mem_Free, pmem
-		
+		.if eax==-1
+			invoke Mem_Free, pmem
+		.else
+			mov hFile, eax	
+			invoke ReadFile, hFile, pmem, 4000h, readed, 0
+			invoke SendMessage, hText, WM_SETTEXT,0,pmem
+		.endif
+
 	.elseif eax==WM_COMMAND
 		.if wParam == IDC_BTN1
 			
@@ -190,7 +184,6 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 				invoke SetWindowText,hOk,addr szStart
 			.elseif SelTab==1
 				invoke SetWindowText,hOk,addr szNext
-;				invoke SendMessage,[hTabDlg+1*4],WM_NULL,0,0
 			.elseif SelTab==2
 				invoke SetWindowText,hOk,addr szInstall
 			.elseif SelTab==3; start progress
