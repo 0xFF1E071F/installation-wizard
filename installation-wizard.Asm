@@ -71,7 +71,6 @@ Tab4Proc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		.if progress==100
 			invoke KillTimer,hWin,10
 			invoke ShowWindow,hOk,SW_SHOW
-;			invoke SetClassLong,hWin,GCL_STYLE, styleTab
 		.endif
 	.else
 		mov		eax,FALSE
