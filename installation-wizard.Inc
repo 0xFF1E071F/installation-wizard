@@ -85,8 +85,6 @@ szLicense		db 0
 readed			dd 0
 pmem 			dd 0
 
-;styleTab		dw 408F0000
-
 .data?
 
 hInstance		dd ?
@@ -96,7 +94,7 @@ hOk				dd ?
 hTabDlg			dd 5 dup(?)
 hText			dd ?
 
-hImage1			dd ?
-hImage2			dd ?
+
+bmp				dd ?
 
 ;#########################################################################

@@ -48,6 +48,8 @@ Menu=1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0
 17=0,0,"$E\OllyDbg",5
 [Resource]
 1=1,0,8,..\..\..\..\..\ASM\ASM\Masm\Sniplets\Code\2.XML
+2=,123,3,install.bmp
+3=,100,0,Button.bmp
 [StringTable]
 [VerInf]
 [Group]
@@ -78,9 +80,9 @@ AutoLoad=1,2,4,9,6,7,8,5
 8=0,0,0,0
 6=0,0,0,0
 5=0,0,0,0
-2=0,0,0,0,446
+2=0,0,0,0,1059
 4=0,0,0,0
-1=0,0,0,0,1772
+1=0,0,0,0,3939
 [VersionControl]
 Settings=1246
 Milestones=129
@@ -124,7 +126,7 @@ ProductVer4Range=0
 6=00FFFFFF
 7=00FFFFFF
 [PTimer]
-PTimer=99123953
+PTimer=103268140
 [GroupExpand]
 GroupExpand=0,1,0,0,1,0
 [BookMark]
