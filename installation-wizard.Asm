@@ -134,7 +134,7 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		mov hTabDlg[16],eax
 		
 		; Load Image
-		invoke LoadBitmap,hInstance,100
+		invoke LoadBitmap,hInstance,123
 		mov bmp, eax
 		invoke SendDlgItemMessage,hTabDlg,IDC_IMG1,STM_SETIMAGE,IMAGE_BITMAP,bmp
 		invoke SendDlgItemMessage,hTabDlg[16],IDC_IMG2,STM_SETIMAGE,IMAGE_BITMAP,bmp

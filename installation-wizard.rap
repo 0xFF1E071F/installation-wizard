@@ -48,7 +48,7 @@ Menu=1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0
 17=0,0,"$E\OllyDbg",5
 [Resource]
 1=1,0,8,..\..\..\..\..\ASM\ASM\Masm\Sniplets\Code\2.XML
-2=,123,3,install.bmp
+2=,123,0,install.bmp
 3=,100,0,Button.bmp
 [StringTable]
 [VerInf]
@@ -93,7 +93,7 @@ MilestoneOnTime=2
 MilestoneOnDate=0
 MilestoneOnDateWhen=1
 MilestoneOnDateStatus=0
-MilestoneOnDateDate=10
+MilestoneOnDateDate=11
 MilestoneOnDateTimeYear=2020
 MilestoneOnDateTimeMonth=12
 MilestoneOnDateTimeDate=9
@@ -126,7 +126,7 @@ ProductVer4Range=0
 6=00FFFFFF
 7=00FFFFFF
 [PTimer]
-PTimer=111286452
+PTimer=111471140
 [GroupExpand]
 GroupExpand=0,1,0,0,1,0
 [BookMark]
