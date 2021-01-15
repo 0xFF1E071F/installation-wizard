@@ -158,12 +158,8 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 	.elseif eax==WM_COMMAND
 		.if wParam == IDC_BTN1
 			
-			mov eax, sizeof hTabDlg
-			mov ecx, 5
-			div ecx
-			
 			; Close if it is the last element
-			.if SelTab == eax
+			.if SelTab == 4
 				invoke SendMessage,hWin,WM_CLOSE,0,0
 			.endif
 			
